@@ -7,7 +7,7 @@ int main() {
     int second_number;
     char operation_code;
     int solution;
-
+// полетела школа..
     std::cout << "enter ur first number: ";
     std::cin >> first_number;
     std::cout << "enter ur second number: ";
