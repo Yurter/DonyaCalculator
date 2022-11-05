@@ -4,12 +4,13 @@
 int read_number_from_input() {
     int number;
     std::cin >> number;
+
     if(!std::cin){
-    //if(std::cin.fail()){
-        throw "u should enter only numbers";
+            throw "u should enter only numbers";
     }
     return number;
 }
+
 
 int calculate () {
     int first_number;
@@ -17,36 +18,47 @@ int calculate () {
     char operation_code;
     int solution;
 
-    std::cout << "enter ur first number: ";
-    first_number = read_number_from_input();
-    std::cout << "enter ur second number: ";
-    second_number = read_number_from_input();
-    //std::cout << "Choose operation:\n\t1 - addition;\n\t2 - subtraction;\n\t3 - division;\n\t4 - multiplication.\n";
-     
-    std::cout << "Choose operation:\n"
-        "1 - addition;\n"
-        "2 - subtraction;\n"
-        "3 - division;\n" 
-        "4 - multiplication.\n";
-    std::cout << "ur op. code is: ";
-    std::cin >> operation_code;
+    std::cout << "enter ur expression to be calcucated: ";
+    std::string input;
+    std::cin >> input;
+
+    if (input.size() != 3) {
+        throw "bad format";
+    }
+
+    first_number = input[0] - '0';
+    operation_code = input[1];
+    second_number = input[2] - '0';
+
+    if (first_number < 0 || first_number > 9){
+        throw "bad first number";
+    }
+
+    
+    if (second_number < 0 || second_number > 9){
+        throw "bad second number";
+    }
+
+
 
     switch (operation_code)
     {
-    case '1':
+    case '+':
         solution = first_number + second_number;
         break;
-    case '2':
+    case '-':
         solution = first_number - second_number;
         break;
         
-    case '3':
+    case '/':
         if (second_number == 0) {throw "u can't divide by zero!";}
         solution = first_number / second_number;
         break;
-    default:
+    case '*':
         solution = first_number * second_number;
         break;
+    default:
+        throw "bad operation sign";
     }
 
     std::cout << "ur solution is: " << solution;
