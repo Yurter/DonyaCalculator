@@ -1,45 +1,49 @@
 #include <iostream>
+#include <string>
 #include "some_shit.hpp"
 
-int read_number_from_input() {
-    int number;
-    std::cin >> number;
-
-    if(!std::cin){
-            throw "u should enter only numbers";
+int find_sign_position (std::string str) {
+    int sign_pos;
+    
+    sign_pos = str.find('+');
+    if (sign_pos != std::string::npos) {
+        return sign_pos;
     }
-    return number;
-}
+    sign_pos = str.find('-');
+    if (sign_pos != std::string::npos) {
+        return sign_pos;
+    }
+    sign_pos = str.find('/');
+    if (sign_pos != std::string::npos) {
+        return sign_pos;
+    }
+    sign_pos = str.find('*');
+    if (sign_pos != std::string::npos) {
+        return sign_pos;
+    }
 
+    return std::string::npos;
+}
 
 int calculate () {
     int first_number;
     int second_number;
     char operation_code;
     int solution;
-
+    int sign_pos;
+    
     std::cout << "enter ur expression to be calcucated: ";
     std::string input;
     std::cin >> input;
 
-    if (input.size() != 3) {
-        throw "bad format";
+    sign_pos = find_sign_position(input);
+    if (sign_pos == std::string::npos) {
+        throw "expression has no operation sign";
     }
 
-    first_number = input[0] - '0';
-    operation_code = input[1];
-    second_number = input[2] - '0';
-
-    if (first_number < 0 || first_number > 9){
-        throw "bad first number";
-    }
-
-    
-    if (second_number < 0 || second_number > 9){
-        throw "bad second number";
-    }
-
-
+    operation_code = input[sign_pos];
+    first_number = std::stoi(input.substr(0, sign_pos));
+    second_number = std::stoi(input.substr(sign_pos, input.size()-sign_pos));
 
     switch (operation_code)
     {
