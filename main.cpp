@@ -1,16 +1,18 @@
 #include <iostream>
 #include <typeinfo>
 #include <math.h>
+#include "some_shit.hpp"
 
 int main() {
-    std::cout << "hello";
+
+    calculator();
     int first_number;
     int second_number;
     char operation_code;
     int solution;
 
     std::cout << "enter ur first number: ";
-    std::cin >> fist_number;
+    std::cin >> first_number;
     std::cout << "enter ur second number: ";
     std::cin >> second_number;
     std::cout << "Choose operation:\n\t1 - addition;\n\t2 - subtraction;\n\t3 - division;\n\t4 - multiplication.\n";
@@ -25,7 +27,7 @@ int main() {
     case '2':
         solution = first_number - second_number;
         break;
-
+        
     case '3':
         solution = first_number / second_number;
         break;
@@ -37,5 +39,4 @@ int main() {
     std::cout << "ur solution is: " << solution;
 
     return 0;
-}
 }

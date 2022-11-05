@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.4)
+
+project(donyacalculator)
+
+add_executable(donyacalculator main.cpp some_shit.cpp)
