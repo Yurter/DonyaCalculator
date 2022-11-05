@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <regex>
 #include "some_shit.hpp"
 
 int find_sign_position (std::string str) {
@@ -25,6 +26,15 @@ int find_sign_position (std::string str) {
     return std::string::npos;
 }
 
+void check_input (std::string arg) {
+    std::regex self_regex(R"(^\s*\d*\s*[\+\/\-\*]\s*\d*\s*$)",
+            std::regex_constants::ECMAScript | std::regex_constants::icase);
+    if (!std::regex_search(arg, self_regex)) {
+        throw "u have entered bad input values";
+    }
+
+}
+
 int calculate () {
     int first_number;
     int second_number;
@@ -35,6 +45,7 @@ int calculate () {
     std::cout << "enter ur expression to be calcucated: ";
     std::string input;
     std::cin >> input;
+    check_input(input);
 
     sign_pos = find_sign_position(input);
     if (sign_pos == std::string::npos) {
