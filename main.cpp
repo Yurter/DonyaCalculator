@@ -1,5 +1,10 @@
 #include <iostream>
-int main() {
-    std::cout << "hello";
-    return 0;
+#include "some_shit.hpp"
+
+int main() try {
+    return calculate();
+}
+
+catch (const char* error) {
+    std::cout << error;
 }
