@@ -1,8 +1,8 @@
 #include <iostream>
-#include "some_shit.hpp"
+#include "mycalc.hpp"
 
 int main() try {
-    return calculate();
+    return calculate("1000+1000");
 }
 
 catch (const char* error) {
