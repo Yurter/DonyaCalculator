@@ -51,7 +51,7 @@ int calculate(std::string input) {
 
     operation_code = input[sign_pos];
     first_number = std::stoi(input.substr(0, sign_pos));
-    second_number = std::stoi(input.substr(sign_pos, input.size()-sign_pos));
+    second_number = std::stoi(input.substr(sign_pos+1, input.size()-sign_pos));
 
     switch (operation_code)
     {
