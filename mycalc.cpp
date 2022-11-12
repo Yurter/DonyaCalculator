@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <regex>
+#include <fstream>
 #include "mycalc.hpp"
 
 int find_sign_position(std::string str) {
@@ -74,5 +75,24 @@ int calculate(std::string input) {
     }
 
     std::cout << "ur solution is: " << solution;
-    return 0;
+    return solution;
+}
+
+std::string readFromFile(std::string fileName){
+    // Read from the text file
+    std::string myText;
+    std::ifstream MyReadFile(fileName);
+
+    // Use a while loop together with the getline() function to read the file line by line
+    while (getline(MyReadFile, myText)) {}
+    // Close the file
+    MyReadFile.close();
+    return myText;
+}
+
+void writeToFile(std::string fileName, std::string text){
+// Create and open a text file
+  std::ofstream MyFile(fileName);
+  MyFile << text;
+  MyFile.close();
 }
