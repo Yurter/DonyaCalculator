@@ -1,5 +1,8 @@
 #pragma once
+#include <string>
+#include <vector>
 
-int calculate(std::string input);
+std::vector<int> calculate(std::vector<std::string> inputs);
+void writeToFile(std::string fileName, std::vector<int> result_value);
 void writeToFile(std::string fileName, std::string text);
-std::string readFromFile(std::string fileName);
+std::vector<std::string> readFromFile(std::string fileName);
